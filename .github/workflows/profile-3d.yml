@@ -1,0 +1,19 @@
+name: GitHub 3D Profile Contribution Graph
+
+on:
+  schedule:
+    - cron: "0 8 * * *"   # runs once a day at 8:00 UTC (~3AM EST)
+  workflow_dispatch:       # allows manual run
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate 3D profile contribution graph
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: stalerico
